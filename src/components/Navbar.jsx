@@ -11,7 +11,7 @@ const Navbar = () => {
           </a>
         </div>
         <div>
-          <a href='https://github.com/spacedust26/dumptruckdb' className='git'>Github</a>
+          <a href='https://github.com/spacedust26/dumptruckdb' className='git' target='_blank'>Github</a>
         </div>
       </nav>
     </>
