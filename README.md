@@ -1,12 +1,39 @@
-# React + Vite
+# DumpTruckDB
 
-This template provides a minimal setup to get React working in Vite with HMR and some ESLint rules.
+## Overview
+DumpTruckDB is a powerful, intuitive SQL-powered tool that simplifies data querying and visualization. Whether you're handling large datasets or exploring CSV files, DumpTruckDB streamlines the process, making it effortless to upload, write, and execute queries with ease.
 
-Currently, two official plugins are available:
+## Features
+- **CSV Upload** – Easily upload CSV files and perform SQL queries on them.
+- **SQL Query Execution** – Write and execute SQL queries to interact with your data.
+- **Table View** – View query results in a structured table format.
+- **Intuitive UI** – Simple and efficient interface for a smooth user experience.
+- **Seamless Data Processing** – Efficiently handle large datasets with optimized performance.
 
-- [@vitejs/plugin-react](https://github.com/vitejs/vite-plugin-react/blob/main/packages/plugin-react/README.md) uses [Babel](https://babeljs.io/) for Fast Refresh
-- [@vitejs/plugin-react-swc](https://github.com/vitejs/vite-plugin-react-swc) uses [SWC](https://swc.rs/) for Fast Refresh
+## 🛠 Tech Stack
+- **Frontend:** React.js, Bootstrap, CSS
+- **Database:** SQLite (or in-memory data processing for CSV files)
 
-## Expanding the ESLint configuration
+## Installation
+1. Clone the repository:
+   ```sh
+   git clone https://github.com/yourusername/DumpTruckDB.git
+   cd DumpTruckDB
+   ```
+2. Install dependencies:
+   ```sh
+   npm install
+   ```
+3. Start the development server:
+   ```sh
+   npm start
+   ```
 
-If you are developing a production application, we recommend using TypeScript and enable type-aware lint rules. Check out the [TS template](https://github.com/vitejs/vite/tree/main/packages/create-vite/template-react-ts) to integrate TypeScript and [`typescript-eslint`](https://typescript-eslint.io) in your project.
+## Usage
+1. Upload a CSV file.
+2. Write SQL queries in the query editor.
+3. Execute queries and view the results in a table format.
+
+## Connect
+- GitHub: [DumpTruckDB](https://github.com/yourusername/DumpTruckDB)
+
