@@ -35,6 +35,3 @@ A lightweight, in-browser SQL database that lets you upload CSV files and run SQ
 2. Write SQL queries in the query editor.
 3. Execute queries and view the results in a table format.
 
-## Connect
-- GitHub: [DumpTruckDB](https://github.com/yourusername/DumpTruckDB)
-
