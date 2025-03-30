@@ -10,7 +10,16 @@
   text-rendering: optimizeLegibility;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; 
 }
+html, body {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+}
+
 * {
   margin: 0;
   padding: 0;
@@ -174,13 +183,14 @@ button:hover {
 }
 
 /* footer */
-.footer {
+.footer { 
+  width: 100%;
   background-color: #0F2027;
   color: #9ebdcb;
   text-align: center;
   padding: 1rem;
   font-size: 0.9rem;
-  margin-top: 5%;
+  margin-top: 10%;
 }
 
 .footer p {
