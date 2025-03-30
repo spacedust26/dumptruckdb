@@ -1,18 +1,20 @@
-import React from "react";
-import { TextField } from "@mui/material";
+import React, { useState } from "react";
 
-const QueryEditor = ({ query, setQuery }) => {
+const QueryEditor = ({ onExecute }) => {
+  const [query, setQuery] = useState("SELECT * FROM sqlite_master;");
+
   return (
-    <TextField
-      label="SQL Query"
-      variant="outlined"
-      fullWidth
-      multiline
-      rows={3}
-      value={query}
-      onChange={(e) => setQuery(e.target.value)}
-      sx={{ my: 2 }}
-    />
+    <div>
+      <h3>SQL Query Editor</h3>
+      <textarea
+        rows="5"
+        cols="50"
+        value={query}
+        onChange={(e) => setQuery(e.target.value)}
+      />
+      <br />
+      <button onClick={() => onExecute(query)}>Run Query</button>
+    </div>
   );
 };
 

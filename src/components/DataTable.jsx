@@ -1,33 +1,27 @@
 import React from "react";
-import { Table, TableHead, TableRow, TableCell, TableBody, Paper } from "@mui/material";
 
 const DataTable = ({ data }) => {
-  if (!data || data.length === 0) return <p>No results to display</p>;
-
-  // Extract columns from data keys
-  const columns = Object.keys(data[0]);
+  if (!data.columns.length) return <p>No results</p>;
 
   return (
-    <Paper sx={{ width: "100%", overflow: "hidden", mt: 3 }}>
-      <Table>
-        <TableHead>
-          <TableRow>
-            {columns.map((col, index) => (
-              <TableCell key={index}><strong>{col}</strong></TableCell>
-            ))}
-          </TableRow>
-        </TableHead>
-        <TableBody>
-          {data.map((row, rowIndex) => (
-            <TableRow key={rowIndex}>
-              {columns.map((col, colIndex) => (
-                <TableCell key={colIndex}>{row[col]}</TableCell>
-              ))}
-            </TableRow>
+    <table border="1">
+      <thead>
+        <tr>
+          {data.columns.map((col, index) => (
+            <th key={index}>{col}</th>
           ))}
-        </TableBody>
-      </Table>
-    </Paper>
+        </tr>
+      </thead>
+      <tbody>
+        {data.values.map((row, rowIndex) => (
+          <tr key={rowIndex}>
+            {row.map((cell, cellIndex) => (
+              <td key={cellIndex}>{cell}</td>
+            ))}
+          </tr>
+        ))}
+      </tbody>
+    </table>
   );
 };
 
