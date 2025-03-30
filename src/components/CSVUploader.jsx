@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Button, Typography, Box, Alert } from "@mui/material";
+<script src="https://cdn.lordicon.com/lordicon.js"></script>
 
 const CSVUploader = ({ onUpload }) => {
   const [fileName, setFileName] = useState(""); 
@@ -57,7 +58,7 @@ const CSVUploader = ({ onUpload }) => {
 
       {fileName && (
         <Typography mt={1} color = "#5c8192">
-          Selected : {fileName}
+          Selected File : {fileName}
         </Typography>
       )}
       

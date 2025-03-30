@@ -1,12 +1,12 @@
 .query-app{
   display: flex;
-  justify-content: space-evenly;
+  justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  gap: 40px;
 }
-
 h2 {
+  margin-top: 5%;
   font-size: 3rem;
   color: #9ebdcb;
   font-weight: 700;
@@ -38,7 +38,7 @@ h2 {
   background-size: cover;
   box-shadow: 0 8px 17px 2px rgba(0,0,0,0.14), 0 3px 14px 2px rgba(0,0,0,0.12), 0 5px 5px -3px rgba(0,0,0,0.2);
   border-radius: 20px;
-  width: 60%;
+  width:80%;
 }
 
 .csv-button{

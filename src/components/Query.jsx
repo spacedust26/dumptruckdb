@@ -8,47 +8,50 @@ import "../query.css";
 
 const QueryApp = () => {
   const [db, setDb] = useState(null);
-  const [tables, setTables] = useState([]);
+  const [tableName, setTableName] = useState(""); 
   const [queryResult, setQueryResult] = useState({ columns: [], values: [] });
 
   useEffect(() => {
     const loadSQL = async () => {
-      const SQL = await initSqlJs({ locateFile: (file) => `https://sql.js.org/dist/${file}` });
-      setDb(new SQL.Database());
+      try {
+        const SQL = await initSqlJs({ locateFile: (file) => `https://sql.js.org/dist/${file}` });
+        setDb(new SQL.Database());
+      } catch (error) {
+        console.error("Error loading sql.js:", error);
+      }
     };
     loadSQL();
   }, []);
 
   const handleCSVUpload = (filename, csvData) => {
     if (!db) return;
-    
-    const rows = csvData.split("\n").map((row) => row.split(","));
-    const headers = rows.shift();
-    const tableName = filename.replace(".csv", "").replace(/\s+/g, "_");
 
-    const createTableSQL = `CREATE TABLE ${tableName} (${headers.map(h => `"${h}" TEXT`).join(", ")});`;
-    db.run(createTableSQL);
+    try {
+      const rows = csvData.split("\n").map((row) => row.split(","));
+      const headers = rows.shift();
+      const table = filename.replace(".csv", "").replace(/\s+/g, "_");
 
-    const insertSQL = `INSERT INTO ${tableName} VALUES (${headers.map(() => "?").join(", ")});`;
-    const stmt = db.prepare(insertSQL);
-    rows.forEach((row) => stmt.run(row));
-    stmt.free();
+      const createTableSQL = `CREATE TABLE ${table} (${headers.map(h => `"${h}" TEXT`).join(", ")});`;
+      db.run(createTableSQL);
 
-    updateTableList();
-  };
+      const insertSQL = `INSERT INTO ${table} VALUES (${headers.map(() => "?").join(", ")});`;
+      const stmt = db.prepare(insertSQL);
+      rows.forEach((row) => stmt.run(row));
+      stmt.free();
 
-  const updateTableList = () => {
-    if (!db) return;
-    const tablesQuery = db.exec("SELECT name FROM sqlite_master WHERE type='table';");
-    if (tablesQuery.length > 0) {
-      setTables(tablesQuery[0].values.flat());
+      setTableName(table); 
+    } catch (error) {
+      console.error("CSV Processing Error:", error);
+      alert("Error processing CSV file.");
     }
   };
 
   const executeQuery = (query) => {
-    if (!db) return;
+    if (!db || !tableName) return;
+    const formattedQuery = query.replace("table_name", tableName); 
+
     try {
-      const result = db.exec(query);
+      const result = db.exec(formattedQuery);
       if (result.length > 0) {
         setQueryResult({ columns: result[0].columns, values: result[0].values });
       } else {
@@ -62,12 +65,14 @@ const QueryApp = () => {
   return (
     <div className="query-app">
       <h2>Dump Your Data Into The Truck</h2>
-      <div class="transparent-div">
+      <div className="transparent-div">
         <CSVUploader onUpload={handleCSVUpload} />
-        <QuerySelector tables={tables} onSelect={(table) => executeQuery(`SELECT * FROM ${table}`)} />
+        <QuerySelector onSelect={executeQuery} />
         <QueryEditor onExecute={executeQuery} />
       </div>
-      <DataTable data={queryResult} />
+      <div className="transparent-div">
+        <DataTable data={queryResult} />
+      </div>
     </div>
   );
 };
