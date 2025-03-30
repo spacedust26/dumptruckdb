@@ -1,7 +1,7 @@
 # DumpTruckDB
 
 ## Overview
-DumpTruckDB is a powerful, intuitive SQL-powered tool that simplifies data querying and visualization. Whether you're handling large datasets or exploring CSV files, DumpTruckDB streamlines the process, making it effortless to upload, write, and execute queries with ease.
+A lightweight, in-browser SQL database that lets you upload CSV files and run SQL queries on them instantly. Built using React and sql.js, this app runs entirely in your browser, requiring no server or backend.
 
 ## Features
 - **CSV Upload** – Easily upload CSV files and perform SQL queries on them.
@@ -9,15 +9,16 @@ DumpTruckDB is a powerful, intuitive SQL-powered tool that simplifies data query
 - **Table View** – View query results in a structured table format.
 - **Intuitive UI** – Simple and efficient interface for a smooth user experience.
 - **Seamless Data Processing** – Efficiently handle large datasets with optimized performance.
+- **Predefined Queries** –  Quick access to common queries like SELECT, COUNT, etc.
+- **Fully Client-Side** – No database setup, everything runs in the browser.
 
 ## 🛠 Tech Stack
-- **Frontend:** React.js, Bootstrap, CSS
-- **Database:** SQLite (or in-memory data processing for CSV files)
+- React.js, SQLite
 
 ## Installation
 1. Clone the repository:
    ```sh
-   git clone https://github.com/yourusername/DumpTruckDB.git
+   git clone https://github.com/spacedust26/DumpTruckDB.git
    cd DumpTruckDB
    ```
 2. Install dependencies:
