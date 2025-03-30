@@ -18,7 +18,6 @@ const CSVUploader = ({ onUpload }) => {
     setError(""); 
     setFileName(file.name); 
 
-    // Read and upload CSV data
     const reader = new FileReader();
     reader.onload = (e) => {
       const text = e.target.result;
@@ -28,7 +27,7 @@ const CSVUploader = ({ onUpload }) => {
   };
 
   return (
-    <Box textAlign="center" p={2}>
+    <Box textAlign="center" sx={{ marginBottom: "2rem" }}>
       <input
         accept=".csv"
         id="csv-upload"
@@ -57,7 +56,7 @@ const CSVUploader = ({ onUpload }) => {
       </label>
 
       {fileName && (
-        <Typography mt={1} color = "#5c8192">
+        <Typography mt={2} color = "#5c8192" fontSize={"1.2rem"} fontWeight={600}>
           Selected File : {fileName}
         </Typography>
       )}

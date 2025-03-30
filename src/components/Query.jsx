@@ -2,13 +2,12 @@ import React, { useState, useEffect } from "react";
 import initSqlJs from "sql.js";
 import CSVUploader from "./CSVUploader";
 import DataTable from "./DataTable";
-import QueryEditor from "./QueryEditor";
-import QuerySelector from "./QuerySelector";
+import QueryManager from "./QueryManager"; 
 import "../query.css";
 
 const QueryApp = () => {
   const [db, setDb] = useState(null);
-  const [tableName, setTableName] = useState(""); 
+  const [tableName, setTableName] = useState("");
   const [queryResult, setQueryResult] = useState({ columns: [], values: [] });
 
   useEffect(() => {
@@ -27,8 +26,13 @@ const QueryApp = () => {
     if (!db) return;
 
     try {
-      const rows = csvData.split("\n").map((row) => row.split(","));
+      const rows = csvData.trim().split("\n").map((row) => row.split(",").map(cell => cell.trim()));
       const headers = rows.shift();
+      if (!headers || headers.length === 0) {
+        alert("CSV file is empty or invalid!");
+        return;
+      }
+
       const table = filename.replace(".csv", "").replace(/\s+/g, "_");
 
       const createTableSQL = `CREATE TABLE ${table} (${headers.map(h => `"${h}" TEXT`).join(", ")});`;
@@ -39,7 +43,7 @@ const QueryApp = () => {
       rows.forEach((row) => stmt.run(row));
       stmt.free();
 
-      setTableName(table); 
+      setTableName(table);
     } catch (error) {
       console.error("CSV Processing Error:", error);
       alert("Error processing CSV file.");
@@ -47,16 +51,14 @@ const QueryApp = () => {
   };
 
   const executeQuery = (query) => {
-    if (!db || !tableName) return;
-    const formattedQuery = query.replace("table_name", tableName); 
+    if (!db || !tableName) {
+      alert("No table selected or database not initialized.");
+      return;
+    }
 
     try {
-      const result = db.exec(formattedQuery);
-      if (result.length > 0) {
-        setQueryResult({ columns: result[0].columns, values: result[0].values });
-      } else {
-        setQueryResult({ columns: [], values: [] });
-      }
+      const result = db.exec(query);
+      setQueryResult(result.length > 0 ? { columns: result[0].columns, values: result[0].values } : { columns: [], values: [] });
     } catch (error) {
       alert("SQL Error: " + error.message);
     }
@@ -67,8 +69,7 @@ const QueryApp = () => {
       <h2>Dump Your Data Into The Truck</h2>
       <div className="transparent-div">
         <CSVUploader onUpload={handleCSVUpload} />
-        <QuerySelector onSelect={executeQuery} />
-        <QueryEditor onExecute={executeQuery} />
+        <QueryManager onExecute={executeQuery} tableName={tableName} />
       </div>
       <div className="transparent-div">
         <DataTable data={queryResult} />
