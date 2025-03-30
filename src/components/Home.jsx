@@ -8,7 +8,7 @@ const Home = () => {
       </div>
       <div className='hero-inner-right'>
         <div>
-          <h1 className="title">Redefining the way you interact with data <span><img src='src/assets/file.gif'  style={{width: "40px"}}/></span></h1>
+          <h1 className="title">Redefining the way you interact with data <span><img src='/file.gif'  style={{width: "40px"}}/></span></h1>
           <p className="subtitle">DumpTruckDB is your go-to SQL-powered data querying tool. Whether you're handling large datasets or just need a quick way to explore CSV files, we've got you covered. No more messy spreadsheets—upload, write, and execute queries effortlessly! </p>
         </div>
         <div>

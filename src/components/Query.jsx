@@ -68,7 +68,7 @@ const QueryApp = () => {
     <div className="query-app">
     <div className="header-container">
       <h2>Dump Your Data Into The Truck</h2>
-      <img src="src/assets/bin.gif" alt="Bin Icon" className="header-icon" />
+      <img src="/bin.gif" alt="Bin Icon" className="header-icon" />
     </div>
       <div className="transparent-div">
         <CSVUploader onUpload={handleCSVUpload} />
