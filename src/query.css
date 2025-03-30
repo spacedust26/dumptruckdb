@@ -22,6 +22,19 @@ h2 {
   h2 {
     font-size: 2rem;
   }
+  .header-container {
+    flex-direction: column; 
+  }
+
+  .header-container h2 {
+    font-size: 1.5rem;
+    text-align: center;
+  }
+
+  .header-icon {
+    width: 40px;
+    margin-top: 5px;
+  }
 }
 
 @media (max-width: 480px) {
@@ -29,7 +42,6 @@ h2 {
     font-size: 1.5rem;
   }
 }
-
 
 .transparent-div {
   color: white;
@@ -52,3 +64,24 @@ h2 {
   margin-right: 1rem;
   border-radius: 5px;
 }
+
+.header-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap; 
+  text-align: center;
+  margin-top: 20px;
+}
+
+.header-container h2 {
+  font-size: 2rem;
+  margin: 0;
+  white-space: nowrap; 
+}
+
+.header-icon {
+  width: 50px;
+  margin-left: 12px;
+}
+

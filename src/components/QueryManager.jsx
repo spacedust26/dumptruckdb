@@ -10,6 +10,8 @@ const QueryManager = ({ onExecute, tableName }) => {
     { label: "View All Data", value: `SELECT * FROM ${tableName}` },
     { label: "Count Rows", value: `SELECT COUNT(*) FROM ${tableName}` },
     { label: "View First 5 Rows", value: `SELECT * FROM ${tableName} LIMIT 5` },
+    { label: "View Last 5 Rows", value: `SELECT * FROM ${tableName} ORDER BY ROWID DESC LIMIT 5` },
+  { label: "Show Column Names", value: `PRAGMA table_info(${tableName})` },
   ];
 
   const handleEditorChange = (e) => {

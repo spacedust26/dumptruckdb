@@ -32,17 +32,17 @@ const QueryApp = () => {
         alert("CSV file is empty or invalid!");
         return;
       }
-
+      // alert("done 1");
       const table = filename.replace(".csv", "").replace(/\s+/g, "_");
-
+      // alert("done table name");
       const createTableSQL = `CREATE TABLE ${table} (${headers.map(h => `"${h}" TEXT`).join(", ")});`;
       db.run(createTableSQL);
-
+      // alert("done create table");
       const insertSQL = `INSERT INTO ${table} VALUES (${headers.map(() => "?").join(", ")});`;
       const stmt = db.prepare(insertSQL);
       rows.forEach((row) => stmt.run(row));
       stmt.free();
-
+      // alert("done table insert");
       setTableName(table);
     } catch (error) {
       console.error("CSV Processing Error:", error);
@@ -66,7 +66,10 @@ const QueryApp = () => {
 
   return (
     <div className="query-app">
+    <div className="header-container">
       <h2>Dump Your Data Into The Truck</h2>
+      <img src="src/assets/bin.gif" alt="Bin Icon" className="header-icon" />
+    </div>
       <div className="transparent-div">
         <CSVUploader onUpload={handleCSVUpload} />
         <QueryManager onExecute={executeQuery} tableName={tableName} />
