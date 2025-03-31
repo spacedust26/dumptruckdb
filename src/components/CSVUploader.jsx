@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Button, Typography, Box, Alert } from "@mui/material";
-<script src="https://cdn.lordicon.com/lordicon.js"></script>
 
 const CSVUploader = ({ onUpload }) => {
   const [fileName, setFileName] = useState(""); 
