@@ -79,8 +79,7 @@ Since this project is a frontend-only application, the design primarily focuses 
 ## **1. Architecture Overview**  
 - **Frontend**: Built using **React** for a dynamic UI  
 - **State Management**: Local state and context API (no Redux for simplicity)  
-- **Storage**: Uses **IndexedDB (via sql.js)** for local SQL-like data storage  
-- **Performance Optimization**: Web Workers for async processing  
+
 ## **2. Key Technical Decisions & Justifications**  
 
 | Decision | Justification |
