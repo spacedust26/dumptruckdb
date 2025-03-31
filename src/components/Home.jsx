@@ -1,4 +1,4 @@
-import logobg from '../assets/logo-bg.png';
+import logobg from '../assets/logo-bg.webp';
 
 const Home = () => {
   return (

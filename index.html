@@ -2,12 +2,37 @@
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
-    <link rel="icon" type="image/svg+xml" href="src/assets/logo.png" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>DumpTruckDB</title>
+    <title>DumpTruckDB - A lightweight, in-browser SQL database</title>
+    <meta 
+      name="description" 
+      content="DumpTruckDB is your go-to SQL-powered data querying tool. Whether you're handling large datasets or just need a quick way to explore CSV files, we've got you covered. No more messy spreadsheets—upload, write, and execute queries effortlessly!"
+    />
+    <link rel="icon" type="image/png" href="/assets/logo.webp" />
+    <link rel="preload" href="/src/main.jsx" as="script" />
+    <meta property="og:title" content="DumpTruckDB - A lightweight, in-browser SQL database" />
+    <meta property="og:description" content="DumpTruckDB is your go-to SQL-powered data querying tool. Whether you're handling large datasets or just need a quick way to explore CSV files, we've got you covered. No more messy spreadsheets—upload, write, and execute queries effortlessly!" />
+    <meta property="og:url" content="https://dumptruckdb.vercel.app/" />
+    <meta property="og:type" content="website" />
+    <script type="application/ld+json">
+      {
+        "@context": "https://schema.org",
+        "@type": "SoftwareApplication",
+        "name": "DumpTruckDB",
+        <!-- "image": "https://example.com/assets/dumptruckdb-preview.jpg", -->
+        "description": "DumpTruckDB - A lightweight, in-browser SQL database",
+        "operatingSystem": "Web",
+        "applicationCategory": "Database Management",
+        "offers": {
+          "@type": "Offer",
+          "price": "0",
+          "priceCurrency": "USD"
+        }
+      }
+    </script>
   </head>
   <body>
     <div id="root"></div>
-    <script type="module" src="/src/main.jsx"></script>
+    <script type="module" src="/src/main.jsx" defer></script>
   </body>
 </html>
